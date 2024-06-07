@@ -31,19 +31,24 @@ We designed this tool using open-source architecture requiring minimal computati
 
 To run the code in this repository, you will need to install the following dependencies:
 
-- [Ollama]([url](https://github.com/ollama/ollama))
-- Dependency 2
-- Dependency 3
+- [Ollama](https://github.com/ollama/ollama)
+- [Anaconda](https://docs.anaconda.com/free/anaconda/install/)
 
-You can install the dependencies using the following command:
+You can install packages into an Anaconda environment using the following command:
 
 ```bash
-pip install -r requirements.txt
+conda create --name <env> --file requirements.txt
 ```
 
 ## Usage
 
 ### Set up your Ollama server
+
+1. Follow the [installation instructions](https://github.com/ollama/ollama) as according to your operating system.
+2. Load the Modelfile for the corresponding LLM into Ollama. The Modelfile included in this repository uses Mistral 7B Open Orca and sets the temperature parameter to zero and max token output to 256.
+    ```bash
+    ollama create example -f mistralopenorca_for_irAEs.Modelfile
+    ```
 
 ### Running the Code
 
