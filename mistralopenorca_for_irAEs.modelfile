@@ -1,0 +1,7 @@
+FROM /home/gsun/.ollama/models/blobs/sha256:6504ba23a37160de70db611212815c9aab171864d206b8c013b72fd0b16e19eb
+
+PARAMETER stop "<|im_start|>"
+PARAMETER stop "<|im_end|>"
+PARAMETER num_predict 256
+PARAMETER temperature 0
+PARAMETER seed 82
