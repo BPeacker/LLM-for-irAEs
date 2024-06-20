@@ -4,7 +4,7 @@
 
 **Authors**: [Author Names](link_to_author_profiles)
 
-**Published in**: [Journal Name](link_to_journal)
+**Published in**: [Journal of Clinical Oncology](https://ascopubs.org/journal/jco/)
 
 ## Table of Contents
 
@@ -80,17 +80,28 @@ python example.py --input data/input_file.csv --output results/output_file.csv
 
 ### Data Sources
 
-Describe the datasets used in the paper, including where and how they can be accessed:
+Due to protected health information (PHI) included in the data sources, we are unable to provide any data. We will attempt to create sample data using simulated patients and will include it here when available. 
 
-- Dataset 1: [Link to dataset](link)
-- Dataset 2: [Link to dataset](link)
+The dataset used in this code, ```demo_reports.rdata``` contains the following information in this format:
+
+| Patient_ID | Case    | Text    |
+| :---:   | :---: | :---: |
+| 1 | Hepatitis   | progress note 1 text   |
+| 1 | Hepatitis   | progress note 2 text   |
+| ... | Hepatitis   | ...   |
+| 1 | Hepatitis   | progress note 30 text   |
+| 1 | Hepatitis   | discharge summary text   |
+| 2 | N/A   | progress note 1 text   |
+| ... | ...   | ...   |
+
 
 ### Preprocessing
 
-Explain any preprocessing steps required before running the analysis:
-
-1. Step 1
-2. Step 2
+Datasets used in this research were created using data from the Research Patient Data Registry at Massachusetts General Brigham. To create similar datasets at your institution, consider the following steps:  
+1. Create a list of all inpatient hospital encounters of patients receiving immune checkpoint inhibitor therapy, containing the patient ID, admission date, and discharge date.
+2. Filter the list of encounters to ensure the patient was admitted to the hospital AFTER receiving immune checkpoint inhibition therapy. Consider also filtering based on time since starting therapy (i.e. 6 months, 1 year).
+3. Collect all progress notes, discharge summaries, and any other relevant notes written in the time frame of their hospitalization. In our manuscript, we also included notes written the day before admission and up to five days after discharge to account for pre-admission notes and delays in provider notewriting.
+4. 
 
 ## Reproducing Results
 
@@ -129,12 +140,9 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-For any questions or issues, please contact [Author Name](link_to_email_or_profile).
+For any questions or issues, please contact [Ginny Sun, MD](vsun1@mgh.harvard.edu).
 
 ## Acknowledgements
 
-Acknowledge any collaborators, funding sources, or third-party libraries:
-
-- Collaborator 1
-- Funding source 1
-- Library 1
+- Research reported in this publication was supported by the National Heart, Lung, and Blood Institute of the National Institutes of Health under award number K24HL150238, as well as the Pugh Family for their generous donation to the Pugh Scholar Fund.
+- We would additionally like to thank the Severe Immunotherapy Complications Service and the Cardiac Imaging Research Lab for their support.
