@@ -103,8 +103,6 @@ Datasets used in this research were created using data from the Research Patient
 
 ## Repository Structure
 
-Briefly describe the structure of the repository:
-
 ```
 repo_name/
 │
