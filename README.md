@@ -103,13 +103,11 @@ Datasets used in this research were created using data from the Research Patient
 
 ## Repository Structure
 
-Briefly describe the structure of the repository:
-
 ```
 repo_name/
 │
 ├── modelfiles/           # Example modelfiles that can be loaded onto the Ollama server
-├── demo_scripts/         # Scripts for running the LLM
+├── scripts/         # Scripts for running the LLM
 ├── README.md             # This README file
 ├── requirements.txt      # Python dependencies
 └── LICENSE               # License file
