@@ -107,7 +107,7 @@ Datasets used in this research were created using data from the Research Patient
 repo_name/
 │
 ├── modelfiles/           # Example modelfiles that can be loaded onto the Ollama server
-├── scripts/         # Scripts for running the LLM
+├── scripts/              # Scripts for running the LLM
 ├── README.md             # This README file
 ├── requirements.txt      # Python dependencies
 └── LICENSE               # License file
