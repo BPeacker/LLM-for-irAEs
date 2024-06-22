@@ -12,7 +12,6 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Data](#data)
-- [Reproducing Results](#reproducing-results)
 - [Repository Structure](#repository-structure)
 - [License](#license)
 - [Contact](#contact)
@@ -29,58 +28,58 @@ We designed this tool using open-source architecture requiring minimal computati
 
 ## Installation
 
-To run the code in this repository, you will need to install the following dependencies:
-
-- [Ollama](https://github.com/ollama/ollama)
-- [Anaconda](https://docs.anaconda.com/free/anaconda/install/)
-
-You can install packages into an Anaconda environment using the following command:
-
-```bash
-conda create --name <env> --file requirements.txt
-```
-
-## Usage
-
-### Set up your Ollama server
-
-1. Follow the [installation instructions](https://github.com/ollama/ollama) as according to your operating system.
-2. (Optional) Load the Modelfile for the corresponding LLM into Ollama. The Modelfile included in this repository uses Mistral 7B Open Orca and sets the temperature parameter to zero and max token output to 256.
-    ```bash
-    ollama create example -f mistralopenorca_for_irAEs.Modelfile
-    ```
-
-### Running the Code
-
 1. Clone the repository:
     ```bash
     git clone https://github.com/username/repo_name.git
     cd repo_name
     ```
+    
+2. Install Anaconda:
+- [Anaconda](https://docs.anaconda.com/free/anaconda/install/)
 
-2. Set up your Ollama server:
+3. Install packages into an Anaconda environment using the following command:
+     ```bash
+     conda create --name <ENV> --file requirements.txt
+     ```
+
+## Usage
+
+### Set up your Ollama server
+
+1. Ensure Ollama was properly installed by running the following command in your Anaconda environment. If not, follow the [installation instructions](https://github.com/ollama/ollama) as according to your operating system.
+   ```bash
+   ollama --version
+   ```
+2. (Optional) Load the Modelfile for the corresponding LLM into Ollama. The Modelfile included in this repository uses Mistral 7B Open Orca and sets the temperature parameter to zero and max token output to 256.
     ```bash
-    python preprocess.py
+    ollama create example -f ./modelfiles/mistralopenorca_for_irAEs.Modelfile
     ```
-
-3. Run the main analysis:
+3. Pull the model you want to use.
     ```bash
-    python main_analysis.py
+    ollama pull mistral-openorca ## OR ollama pull example, if you followed step 2. from above
     ```
+4. Start up your Ollama server in a separate tmux session. This allows you to make API requests to the Ollama server while running Python code.
+    ```bash
+    tmux new -s ollama-server
+    conda activate <ENV>
+    ollama serve
+    ```
+   Use ```Ctrl-B + d``` to detach from your session, and ```tmux attach-session -t ollama-server``` to return to your session as necessary.
 
-### Example
+### Running the Code
 
-Provide an example of how to use the code. For instance:
-
-```bash
-python example.py --input data/input_file.csv --output results/output_file.csv
-```
+1. Follow the steps in ```./scripts/demo_LLM_walkthrough.pdf``` for a step-by-step guide, while ensuring everything runs smoothly. Note that you will have to create your own data to replace ```demo_reports.rdata``` (see #data for how to format the file):
+2. If all goes well, run the full analysis:
+    ```bash
+    python ./scripts/demo_LLM_loop.py
+    ```
+   This code will output a csv file titled ```demo_LLM_loop_results.csv``` containing the LLM responses and corresponding source text retrieved via RAG. 
 
 ## Data
 
 ### Data Sources
 
-Due to protected health information (PHI) included in the data sources, we are unable to provide any data. We will attempt to create sample data using simulated patients and will include it here when available. 
+Due to protected health information (PHI) included in the data sources, we are unable to provide the dataset used in this code. We will attempt to create sample data using simulated patients and will include it in the repository when available. 
 
 The dataset used in this code, ```demo_reports.rdata``` contains the following information in this format:
 
@@ -100,23 +99,7 @@ The dataset used in this code, ```demo_reports.rdata``` contains the following i
 Datasets used in this research were created using data from the Research Patient Data Registry at Massachusetts General Brigham. To create similar datasets at your institution, consider the following steps:  
 1. Create a list of all inpatient hospital encounters of patients receiving immune checkpoint inhibitor therapy, containing the patient ID, admission date, and discharge date.
 2. Filter the list of encounters to ensure the patient was admitted to the hospital AFTER receiving immune checkpoint inhibition therapy. Consider also filtering based on time since starting therapy (i.e. 6 months, 1 year).
-3. Collect all progress notes, discharge summaries, and any other relevant notes written in the time frame of their hospitalization. In our manuscript, we also included notes written the day before admission and up to five days after discharge to account for pre-admission notes and delays in provider notewriting.
-4. 
-
-## Reproducing Results
-
-To reproduce the results presented in the paper, follow these steps:
-
-1. Download the datasets and place them in the `data` directory.
-2. Run the preprocessing script:
-    ```bash
-    python preprocess.py
-    ```
-3. Execute the main analysis script:
-    ```bash
-    python main_analysis.py
-    ```
-4. The results will be saved in the `results` directory.
+3. Collect all progress notes, discharge summaries, and any other relevant notes written in the time frame of their hospitalization and store them in a RData file with a corresponding patient/hospitalization ID number. In our manuscript, we also included notes written the day before admission and up to five days after discharge to account for pre-admission notes and delays in provider notewriting.
 
 ## Repository Structure
 
@@ -125,10 +108,8 @@ Briefly describe the structure of the repository:
 ```
 repo_name/
 │
-├── data/                 # Raw and processed data
-├── scripts/              # Scripts for preprocessing and analysis
-├── results/              # Output results
-├── notebooks/            # Jupyter notebooks for exploratory analysis
+├── modelfiles/           # Example modelfiles that can be loaded onto the Ollama server
+├── demo_scripts/         # Scripts for running the LLM
 ├── README.md             # This README file
 ├── requirements.txt      # Python dependencies
 └── LICENSE               # License file
