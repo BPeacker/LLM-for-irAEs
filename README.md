@@ -1,10 +1,13 @@
 # Detecting severe immune-related adverse events using large language models
 
-**Repository for**: [Enhancing precision in detecting severe immune-related adverse events: comparative analysis of large language models and ICD codes in patient records](link_to_paper)
+**Repository for**: [Enhancing precision in detecting severe immune-related adverse events: comparative analysis of large language models and ICD codes in patient records](https://ascopubs.org/doi/abs/10.1200/JCO.24.00326?journalCode=jco)
 
-**Authors**: [Author Names](link_to_author_profiles)
+**Authors**: Virginia H. Sun, MD; Julius C. Heemelaar, MD; Ibrahim Hadzic, MSc; Vineet K. Raghu, PhD; Chia-Yun Wu, MD; Leyre Zubiri, MD, PhD; Azin Ghamari, MD; Nicole R. LeBoeuf, MD, MPH; Osama Abu-Shawer, MD, MS; Kenneth L. Kehl, MD, MPH; Shilpa Grover, MD, MPH; Prabhsimranjot Singh, MD; Giselle A. Suero-Abreu, MD, PhD, MSc; Jessica Wu, BA; Ayo S. Falade, MD, MBA, APGD; Kelley Grealish, MSN, NP; Molly F. Thomas, MD, PhD; Nora Hathaway, MSN, NP7 ; Benjamin D. Medoff, MD; Hannah K. Gilman, BS; Alexandra-Chloe Villani, PhD; Jor Sam Ho, MPH; Meghan J. Mooradian, MD; Meghan E. Sise, MD; Daniel A. Zlotoff, MD, PhD; Steven M. Blum, MD;
+Michael Dougan, MD, PhD; Ryan J. Sullivan, MD; Tomas G. Neilan, MD, MPH; and Kerry L. Reynolds, MD
 
 **Published in**: [Journal of Clinical Oncology](https://ascopubs.org/journal/jco/)
+
+**Article citation**: Sun, V. H., Heemelaar, J. C., Hadzic, I., Raghu, V. K., Wu, C. Y., Zubiri, L., ... & Reynolds, K. L. (2024). Enhancing Precision in Detecting Severe Immune-Related Adverse Events: Comparative Analysis of Large Language Models and International Classification of Disease Codes in Patient Records. Journal of Clinical Oncology, JCO-24.
 
 ## Table of Contents
 
