@@ -1,4 +1,9 @@
-## Please cite: 
+## Please cite: Sun, V. H., Heemelaar, J. C., Hadzic, I., Raghu, V. K., Wu, C. Y., 
+## Zubiri, L., ... & Reynolds, K. L. (2024). Enhancing Precision in Detecting Severe 
+## Immune-Related Adverse Events: Comparative Analysis of Large Language Models and 
+## International Classification of Disease Codes in Patient Records. Journal of Clinical 
+## Oncology, JCO-24.
+
 ## Code written by Virginia Sun, MD
 ## Last edited June 10th, 2024
 
