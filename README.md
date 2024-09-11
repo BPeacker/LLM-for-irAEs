@@ -36,20 +36,23 @@ We designed this tool using open-source architecture requiring minimal computati
     git clone https://github.com/username/repo_name.git
     cd repo_name
     ```
-    
-2. Install Anaconda:
-- [Anaconda](https://docs.anaconda.com/free/anaconda/install/)
 
-3. Install packages into an Anaconda environment using the following command:
-     ```bash
-     conda create --name <ENV> --file requirements.txt
-     ```
+2. Install Python (we used v3.10)
+- [Python](https://www.python.org/downloads/)
+
+3. Install Langchain (we used v0.1.2 in the development of the project)
+- [Langchain v0.1.2](https://pypi.org/project/langchain/0.1.2/)
+
+4. Install Ollama
+- [Ollama](https://github.com/ollama/ollama)
+
+5. The full list of packages packages used in our Anaconda environment can be found under ```requirements.txt```. If there are any issues when setting up your environment, consider referring to the document for missing packages.
 
 ## Usage
 
 ### Set up your Ollama server
 
-1. Ensure Ollama was properly installed by running the following command in your Anaconda environment. If not, follow the [installation instructions](https://github.com/ollama/ollama) as according to your operating system.
+1. Ensure Ollama was properly installed by running the following command. If not, follow the [installation instructions](https://github.com/ollama/ollama) as according to your operating system.
    ```bash
    ollama --version
    ```
