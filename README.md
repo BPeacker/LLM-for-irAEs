@@ -71,7 +71,6 @@ We designed this tool using open-source architecture requiring minimal computati
     ```
 3. Install the necessary packages into your new environment:
     ```bash
-    conda create -n demoenv python=3.10
     conda install langchain=0.1.2 -c conda-forge
     conda install numpy pyreadr pandas tqdm
     conda install sentence-transformers=2.2.2
