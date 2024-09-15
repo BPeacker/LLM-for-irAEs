@@ -37,16 +37,11 @@ We designed this tool using open-source architecture requiring minimal computati
     cd repo_name
     ```
 
-2. Install Python (we used v3.10)
-- [Python](https://www.python.org/downloads/)
+2. Install Anaconda as according to your operating system:
+- [Anaconda](https://docs.anaconda.com/anaconda/install/)
 
-3. Install Langchain (we used v0.1.2 in the development of the project)
-- [Langchain v0.1.2](https://pypi.org/project/langchain/0.1.2/)
-
-4. Install Ollama
+3. Install Ollama
 - [Ollama](https://github.com/ollama/ollama)
-
-5. The full list of packages packages used in our Anaconda environment can be found under ```requirements.txt```. If there are any issues when setting up your environment, consider referring to the document for missing packages.
 
 ## Usage
 
@@ -56,15 +51,11 @@ We designed this tool using open-source architecture requiring minimal computati
    ```bash
    ollama --version
    ```
-2. (Optional) Load the Modelfile for the corresponding LLM into Ollama. The Modelfile included in this repository uses Mistral 7B Open Orca and sets the temperature parameter to zero and max token output to 256.
+2. Pull the model you want to use.
     ```bash
-    ollama create example -f ./modelfiles/mistralopenorca_for_irAEs.Modelfile
+    ollama pull mistral-openorca
     ```
-3. Pull the model you want to use.
-    ```bash
-    ollama pull mistral-openorca ## OR ollama pull example, if you followed step 2. from above
-    ```
-4. Start up your Ollama server in a separate tmux session. This allows you to make API requests to the Ollama server while running Python code.
+3. Start up your Ollama server. You may either run it directly using the Desktop application or run it in your shell. If using the latter, set up an Ollama server in a tmux session (on Linux/OSX) as demonstrated below. This allows you to make API requests to the Ollama server.
     ```bash
     tmux new -s ollama-server
     conda activate <ENV>
@@ -72,15 +63,58 @@ We designed this tool using open-source architecture requiring minimal computati
     ```
    Use ```Ctrl-B + d``` to detach from your session, and ```tmux attach-session -t ollama-server``` to return to your session as necessary.
 
+### Set up your Anaconda environment
+
+1. Create a new Anaconda environment:
+    ```bash
+    conda create -n demoenv python=3.10
+    conda activate demoenv
+    ```
+3. Install the necessary packages into your new environment:
+    ```bash
+    conda create -n demoenv python=3.10
+    conda install langchain=0.1.2 -c conda-forge
+    conda install numpy pyreadr pandas tqdm
+    conda install sentence-transformers=2.2.2
+    conda install conda-forge::chromadb=0.4.22
+    ```
+4. Install [Pytorch](https://pytorch.org/get-started/previous-versions/) (version 2.1.0) as according to your operating system.
+- E.g. for OSX:
+    ```bash
+    conda install pytorch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 -c pytorch
+    ```
+
 ### Running the Code
 
 1. Follow the steps in ```./scripts/demo_LLM_walkthrough.pdf``` for a step-by-step guide, while ensuring everything runs smoothly. Note that you will have to create your own data to replace ```demo_reports.rdata``` (see #data for how to format the file):
-2. Consider editing ```demo_LLM_loop``` based on any troubleshooting you needed to do while replicating the steps outlined in ```demo_LLM_walkthrough.pdf```. If all goes well, run the full analysis:
+
+2. Consider editing ```demo_LLM_loop_noGPU.py``` based on any troubleshooting you needed to do while replicating the steps outlined in ```demo_LLM_walkthrough.pdf```. If all goes well, run the full analysis:
     ```bash
-    python ./scripts/demo_LLM_loop.py
+    python ./scripts/demo_LLM_loop_noGPU.py
     ```
    This code will output a csv file titled ```demo_LLM_loop_results.csv``` containing the LLM responses and corresponding source text retrieved via RAG. 
 
+### Speeding up the code with GPU
+
+1. This may be tricky. Be sure to know what type of GPU is being used. Ensure that Ollama is compatable with your GPU [here](https://github.com/ollama/ollama/blob/main/docs/gpu.md).
+
+2. If using CUDA, install either NVCC Toolkit version (11.8)[https://developer.nvidia.com/cuda-11-8-0-download-archive] or (12.1)[https://developer.nvidia.com/cuda-12-1-0-download-archive].
+
+3. In your Anaconda environment (from above), download Pytorch v2.1.0 with the corresponding CUDA version.
+    ```bash
+    # CUDA 11.8
+    conda install pytorch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 pytorch-cuda=11.8 -c pytorch -c nvidia
+    # CUDA 12.1
+    conda install pytorch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 pytorch-cuda=12.1 -c pytorch -c nvidia
+    ```
+
+4. Ensure your Ollama server is using the GPU. This should be automatic, though if you come across any issues consider reading through the (troubleshooting guide)[https://github.com/ollama/ollama/blob/main/docs/troubleshooting.md] for Ollama.
+
+5. Similar to above, consider editing ```demo_LLM_loop_GPU.py``` based on any troubleshooting you may need to do. If all goes well, run the full analysis:
+    ```bash
+    python ./scripts/demo_LLM_loop_GPU.py
+    ```
+    
 ## Data
 
 ### Data Sources
