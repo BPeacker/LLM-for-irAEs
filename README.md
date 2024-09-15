@@ -58,7 +58,6 @@ We designed this tool using open-source architecture requiring minimal computati
 3. Start up your Ollama server. You may either run it directly using the Desktop application or run it in your shell. If using the latter, set up an Ollama server in a tmux session (on Linux/OSX) as demonstrated below. This allows you to make API requests to the Ollama server.
     ```bash
     tmux new -s ollama-server
-    conda activate <ENV>
     ollama serve
     ```
    Use ```Ctrl-B + d``` to detach from your session, and ```tmux attach-session -t ollama-server``` to return to your session as necessary.
