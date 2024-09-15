@@ -97,7 +97,7 @@ We designed this tool using open-source architecture requiring minimal computati
 
 1. This may be tricky. Be sure to know what type of GPU is being used. Ensure that Ollama is compatable with your GPU [here](https://github.com/ollama/ollama/blob/main/docs/gpu.md).
 
-2. If using CUDA, install either NVCC Toolkit version (11.8)[https://developer.nvidia.com/cuda-11-8-0-download-archive] or (12.1)[https://developer.nvidia.com/cuda-12-1-0-download-archive].
+2. If using CUDA, install either NVCC Toolkit version [11.8](https://developer.nvidia.com/cuda-11-8-0-download-archive) or [12.1](https://developer.nvidia.com/cuda-12-1-0-download-archive).
 
 3. In your Anaconda environment (from above), download Pytorch v2.1.0 with the corresponding CUDA version.
     ```bash
@@ -107,7 +107,7 @@ We designed this tool using open-source architecture requiring minimal computati
     conda install pytorch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 pytorch-cuda=12.1 -c pytorch -c nvidia
     ```
 
-4. Ensure your Ollama server is using the GPU. This should be automatic, though if you come across any issues consider reading through the (troubleshooting guide)[https://github.com/ollama/ollama/blob/main/docs/troubleshooting.md] for Ollama.
+4. Ensure your Ollama server is using the GPU. This should be automatic, though if you come across any issues consider reading through the [troubleshooting guide](https://github.com/ollama/ollama/blob/main/docs/troubleshooting.md) for Ollama.
 
 5. Similar to above, consider editing ```demo_LLM_loop_GPU.py``` based on any troubleshooting you may need to do. If all goes well, run the full analysis:
     ```bash
