@@ -2,10 +2,9 @@
 
 **Repository for**: [Enhancing precision in detecting severe immune-related adverse events: comparative analysis of large language models and ICD codes in patient records](https://ascopubs.org/doi/abs/10.1200/JCO.24.00326?journalCode=jco)
 
-**Authors**: Virginia H. Sun, MD; Julius C. Heemelaar, MD; Ibrahim Hadzic, MSc; Vineet K. Raghu, PhD; Chia-Yun Wu, MD; Leyre Zubiri, MD, PhD; Azin Ghamari, MD; Nicole R. LeBoeuf, MD, MPH; Osama Abu-Shawer, MD, MS; Kenneth L. Kehl, MD, MPH; Shilpa Grover, MD, MPH; Prabhsimranjot Singh, MD; Giselle A. Suero-Abreu, MD, PhD, MSc; Jessica Wu, BA; Ayo S. Falade, MD, MBA, APGD; Kelley Grealish, MSN, NP; Molly F. Thomas, MD, PhD; Nora Hathaway, MSN, NP7 ; Benjamin D. Medoff, MD; Hannah K. Gilman, BS; Alexandra-Chloe Villani, PhD; Jor Sam Ho, MPH; Meghan J. Mooradian, MD; Meghan E. Sise, MD; Daniel A. Zlotoff, MD, PhD; Steven M. Blum, MD;
-Michael Dougan, MD, PhD; Ryan J. Sullivan, MD; Tomas G. Neilan, MD, MPH; and Kerry L. Reynolds, MD
+**Authors**: Virginia H. Sun, MD; Julius C. Heemelaar, MD; Ibrahim Hadzic, MSc; Vineet K. Raghu, PhD; Chia-Yun Wu, MD; Leyre Zubiri, MD, PhD; Azin Ghamari, MD; Nicole R. LeBoeuf, MD, MPH; Osama Abu-Shawer, MD, MS; Kenneth L. Kehl, MD, MPH; Shilpa Grover, MD, MPH; Prabhsimranjot Singh, MD; Giselle A. Suero-Abreu, MD, PhD, MSc; Jessica Wu, BA; Ayo S. Falade, MD, MBA, APGD; Kelley Grealish, MSN, NP; Molly F. Thomas, MD, PhD; Nora Hathaway, MSN, NP; Benjamin D. Medoff, MD; Hannah K. Gilman, BS; Alexandra-Chloe Villani, PhD; Jor Sam Ho, MPH; Meghan J. Mooradian, MD; Meghan E. Sise, MD; Daniel A. Zlotoff, MD, PhD; Steven M. Blum, MD; Michael Dougan, MD, PhD; Ryan J. Sullivan, MD; Tomas G. Neilan, MD, MPH; and Kerry L. Reynolds, MD
 
-**Code written by**: Virginia H. Sun, MD; Bryan L. Peaker
+**Code written by**: Virginia H. Sun, MD and Bryan L. Peaker
 
 **Published in**: [Journal of Clinical Oncology](https://ascopubs.org/journal/jco/)
 
@@ -24,12 +23,12 @@ Michael Dougan, MD, PhD; Ryan J. Sullivan, MD; Tomas G. Neilan, MD, MPH; and Ker
 
 ## Introduction
 
-This repository contains the code and data used in the paper [Enhancing precision in detecting severe immune-related adverse events: comparative analysis of large language models and ICD codes in patient records](link_to_paper). The paper presents a large language model (LLM) pipeline with Retrieval Augmented Generation (RAG) to detect immune-related adverse events (irAEs) among hospitalized patients. The main contributions of the paper are:
+This repository contains the code and data used in the paper [Enhancing precision in detecting severe immune-related adverse events: comparative analysis of large language models and ICD codes in patient records](https://ascopubs.org/doi/abs/10.1200/JCO.24.00326?journalCode=jco). The paper presents a large language model (LLM) pipeline with Retrieval Augmented Generation (RAG) to detect immune-related adverse events (irAEs) among hospitalized patients. The main contributions of the paper are:
 - LLMs can automatically detect irAEs with >90% sensitivity and specificity, outperforming ICD codes
 - This automated tool can detect ICI colitis, hepatitis, pneumonitis, and myocarditis at a rate of <10s per chart
 - RAG allows for greater transparency by providing relevant source-text used by the LLM to generate its response
 
-We designed this tool using open-source architecture requiring minimal computational resources. Thus, this software is fully accessible and HIPAA-compliant when run on a local machine. Please cite our [original article](link to paper) if you use this tool, and please feel free to contact us if you have any questions.
+We designed this tool using open-source architecture requiring minimal computational resources. Thus, this software is fully accessible and HIPAA-compliant when run on a local machine. Please cite our [original article](https://ascopubs.org/doi/abs/10.1200/JCO.24.00326?journalCode=jco) if you use this tool, and please feel free to contact us if you have any questions.
 
 ## Installation
 
@@ -153,7 +152,7 @@ The dataset used in this code, ```demo_reports.rdata``` contains the following i
 Data description: 
 - Patient_ID: Unique ID assigned to each patient's "Case"
 - Adjudicated_Case: Reference case as determined by manual adjudication. 
-- Text: Raw text retrieved from progress notes and discharge summaries from each patient case
+- Text: Raw text of progress notes and discharge summaries written during patient's hospitalization
 
 ### Preprocessing
 
