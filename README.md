@@ -5,6 +5,8 @@
 **Authors**: Virginia H. Sun, MD; Julius C. Heemelaar, MD; Ibrahim Hadzic, MSc; Vineet K. Raghu, PhD; Chia-Yun Wu, MD; Leyre Zubiri, MD, PhD; Azin Ghamari, MD; Nicole R. LeBoeuf, MD, MPH; Osama Abu-Shawer, MD, MS; Kenneth L. Kehl, MD, MPH; Shilpa Grover, MD, MPH; Prabhsimranjot Singh, MD; Giselle A. Suero-Abreu, MD, PhD, MSc; Jessica Wu, BA; Ayo S. Falade, MD, MBA, APGD; Kelley Grealish, MSN, NP; Molly F. Thomas, MD, PhD; Nora Hathaway, MSN, NP7 ; Benjamin D. Medoff, MD; Hannah K. Gilman, BS; Alexandra-Chloe Villani, PhD; Jor Sam Ho, MPH; Meghan J. Mooradian, MD; Meghan E. Sise, MD; Daniel A. Zlotoff, MD, PhD; Steven M. Blum, MD;
 Michael Dougan, MD, PhD; Ryan J. Sullivan, MD; Tomas G. Neilan, MD, MPH; and Kerry L. Reynolds, MD
 
+**Code written by**: Virginia H. Sun, MD; Bryan L. Peaker
+
 **Published in**: [Journal of Clinical Oncology](https://ascopubs.org/journal/jco/)
 
 **Article citation**: Sun, V. H., Heemelaar, J. C., Hadzic, I., Raghu, V. K., Wu, C. Y., Zubiri, L., ... & Reynolds, K. L. (2024). Enhancing Precision in Detecting Severe Immune-Related Adverse Events: Comparative Analysis of Large Language Models and International Classification of Disease Codes in Patient Records. Journal of Clinical Oncology, JCO-24.
@@ -86,6 +88,11 @@ We designed this tool using open-source architecture requiring minimal computati
     conda create -n demoenv python=3.10
     conda activate demoenv
     ```
+2. Install [Pytorch](https://pytorch.org/get-started/previous-versions/) (version 2.1.0) as according to your operating system.
+- E.g. for OSX:
+    ```bash
+    conda install pytorch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 -c pytorch
+    ```
 3. Install the necessary packages into your new environment:
     ```bash
     conda install langchain=0.1.2 -c conda-forge
@@ -93,15 +100,10 @@ We designed this tool using open-source architecture requiring minimal computati
     conda install sentence-transformers=2.2.2
     conda install conda-forge::chromadb=0.4.22
     ```
-4. Install [Pytorch](https://pytorch.org/get-started/previous-versions/) (version 2.1.0) as according to your operating system.
-- E.g. for OSX:
-    ```bash
-    conda install pytorch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 -c pytorch
-    ```
 
 ### Running the Code
 
-1. Follow the steps in ```./scripts/demo_LLM_walkthrough.pdf``` for a step-by-step guide, while ensuring everything runs smoothly. Note that you will have to create your own data to replace ```demo_reports.rdata``` (see #data for how to format the file):
+1. Follow the steps in ```./scripts/demo_LLM_walkthrough.pdf``` for a step-by-step guide, while ensuring everything runs smoothly. Note that you will have to create your own data to replace ```demo_reports.rdata``` (see (#data) for how to format the file):
 
 2. Consider editing ```demo_LLM_loop_noGPU.py``` based on any troubleshooting you needed to do while replicating the steps outlined in ```demo_LLM_walkthrough.pdf```. If all goes well, run the full analysis:
     ```bash
@@ -138,7 +140,7 @@ Due to protected health information (PHI) included in the data sources, we are u
 
 The dataset used in this code, ```demo_reports.rdata``` contains the following information in this format:
 
-| Patient_ID | Case    | Text    |
+| Patient_ID | Adjudicated_Case    | Text    |
 | :---:   | :---: | :---: |
 | 1 | Hepatitis   | progress note 1 text   |
 | 1 | Hepatitis   | progress note 2 text   |
@@ -148,6 +150,10 @@ The dataset used in this code, ```demo_reports.rdata``` contains the following i
 | 2 | N/A   | progress note 1 text   |
 | ... | ...   | ...   |
 
+Data description: 
+- Patient_ID: Unique ID assigned to each patient's "Case"
+- Adjudicated_Case: Reference case as determined by manual adjudication. 
+- Text: Raw text retrieved from progress notes and discharge summaries from each patient case
 
 ### Preprocessing
 
