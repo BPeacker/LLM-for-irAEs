@@ -64,6 +64,23 @@ We designed this tool using open-source architecture requiring minimal computati
 
 ### Set up your Anaconda environment
 
+**Option 1: Creating the environment with required packages from the environment.yml file**
+
+1. Create a new Anaconda environment from the ```environment.yml``` file:
+    ```bash
+    conda env create -f environment.yml
+    conda activate demoenv
+    ```
+    This will create the environment and install the required packages based on those listed in environment.yml. Anaconda will install operating system-specific dependencies as needed.
+2. Verify that the required packages were installed correctly:
+    ```bash
+    conda env export --from-history
+    ```
+
+    This will pull up a list of the installed packages. Verify that these packages are the same versions as the ones listed in the manual installation below.
+
+**Option 2: Manually creating the environment and installing the required packages with Anaconda:**
+
 1. Create a new Anaconda environment:
     ```bash
     conda create -n demoenv python=3.10
