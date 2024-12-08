@@ -1,0 +1,18 @@
+name: demoenv
+channels:
+  - pytorch
+  - conda-forge
+dependencies:
+  - python=3.10
+  - langchain=0.1.2
+  - numpy
+  - pandas
+  - pyreadr
+  - tqdm
+  - huggingface_hub=0.19.4
+  - conda-forge::sentence-transformers=2.2.2
+  - conda-forge::tokenizers=0.15.0
+  - conda-forge::chromadb=0.4.22
+  - pytorch::pytorch==2.1.0
+  - pytorch::torchaudio==2.1.0
+  - pytorch::torchvision==0.16.0
