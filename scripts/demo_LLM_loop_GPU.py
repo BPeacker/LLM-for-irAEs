@@ -5,7 +5,6 @@
 ## Oncology, JCO-24.
 
 ## Code written by Virginia Sun, MD
-## Last edited June 10th, 2024
 
 # Import packages
 from langchain.callbacks.manager import CallbackManager
@@ -85,17 +84,20 @@ question_myocarditis = "Immune checkpoint inhibitor induced myocarditis is an im
 question_pneumonitis = "Immune checkpoint inhibitor induced pneumonitis is an immune-related adverse event characterized by pneumonitis as a direct result of immune checkpoint inhibitor therapy. Patients may have chest X-ray (CXR) or CT findings suggestive of pneumonitis. Based on the medical reports provided in the context, is the patient currently experiencing immune checkpoint inhibitor induced pneumonitis? Output your answer as either 'Answer: Yes' or 'Answer: No'. Explain your reasoning."
 
 # Create empty dataframe to store results
-results = pd.DataFrame(columns=['ICI_id', 'Adjudicated_Case', 
+results = pd.DataFrame(columns=['Patient_ID', 'Adjudicated_Case', 
                                 'Answer_Colitis', 'Source_Colitis',
                                 'Answer_Hepatitis', 'Source_Hepatitis',
                                 'Answer_Myocarditis', 'Source_Myocarditis',
                                 'Answer_Pneumonitis','Source_Pneumonitis'])
 
 # Iterate through each patient
-for i in tqdm(text["ICI_id"].unique()):
+for i in tqdm(text["Patient_ID"].unique()):
     # Load text from patient encounter
-    encounter = text[text["ICI_id"] == i]
+    encounter = text[text["Patient_ID"] == i]
     documents = encounter["Text"]
+
+    # Print reference case
+    print("Example Case: " + encounter["Adjudicated_Case"].iloc[0])
     
     # Split text into 1000-character chunks
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
@@ -111,6 +113,7 @@ for i in tqdm(text["ICI_id"].unique()):
     
     # Invoke LLM to detect ICI Colitis
     try:
+        print("Does the patient have ICI colitis?")
         response_colitis = rag_chain_with_source.invoke(question_colitis)
         print()
     except ValueError:
@@ -118,6 +121,7 @@ for i in tqdm(text["ICI_id"].unique()):
         
     # Invoke LLM to detect ICI Hepatitis
     try:
+        print("Does the patient have ICI hepatitis?")
         response_hepatitis = rag_chain_with_source.invoke(question_hepatitis)
         print()
     except ValueError:
@@ -125,6 +129,7 @@ for i in tqdm(text["ICI_id"].unique()):
         
     # Invoke LLM to detect ICI Myocarditis
     try:
+        print("Does the patient have ICI myocarditis?")
         response_myocarditis = rag_chain_with_source.invoke(question_myocarditis)
         print()
     except ValueError:
@@ -132,13 +137,14 @@ for i in tqdm(text["ICI_id"].unique()):
         
     # Invoke LLM to detect ICI Pneumonitis
     try:
+        print("Does the patient have ICI pneumonitis?")
         response_pneumonitis = rag_chain_with_source.invoke(question_pneumonitis)
         print()
     except ValueError:
         response_pneumonitis = {"question": question_pneumonitis,"answer": "xxxxx", "context": "xxxxx"}
 
     results.loc[len(results.index)] = [i, 
-                             encounter.iloc[0,encounter.columns.get_loc("Case")],
+                             encounter.iloc[0,encounter.columns.get_loc("Adjudicated_Case")],
                              response_colitis["answer"], response_colitis["context"],
                              response_hepatitis["answer"], response_hepatitis["context"],
                              response_myocarditis["answer"], response_myocarditis["context"],
