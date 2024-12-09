@@ -150,8 +150,8 @@ The dataset used in this code, ```demo_reports.rdata``` contains the following i
 | ... | ...   | ...   |
 
 Data description: 
-- Patient_ID: Unique ID assigned to each patient's "Case"
-- Adjudicated_Case: Reference case as determined by manual adjudication. 
+- Patient_ID: Unique ID assigned to a patient's hospitalization
+- Adjudicated_Case: Reference case as determined by manual adjudication
 - Text: Raw text of progress notes and discharge summaries written during patient's hospitalization
 
 ### Preprocessing
