@@ -102,7 +102,7 @@ We designed this tool using open-source architecture requiring minimal computati
 
 ### Running the Code
 
-1. Follow the steps in ```./scripts/demo_LLM_walkthrough.pdf``` for a step-by-step guide, while ensuring everything runs smoothly. Note that you will have to create your own data to replace ```demo_reports.rdata``` (see (#data) for how to format the file):
+1. Follow the steps in ```./scripts/demo_LLM_walkthrough.pdf``` for a step-by-step guide, while ensuring everything runs smoothly. Note that you will have to create your own data to replace ```demo_reports.rdata``` (see [Data](#data) for how to format the file):
 
 2. Consider editing ```demo_LLM_loop_noGPU.py``` based on any troubleshooting you needed to do while replicating the steps outlined in ```demo_LLM_walkthrough.pdf```. If all goes well, run the full analysis:
     ```bash
