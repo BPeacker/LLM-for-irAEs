@@ -34,8 +34,8 @@ We designed this tool using open-source architecture requiring minimal computati
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/username/repo_name.git
-    cd repo_name
+    git clone [https://github.com/username/repo_name.git](https://github.com/ginnysun/LLM-for-irAEs)
+    cd LLM-for-irAEs
     ```
 
 2. Install Anaconda as according to your operating system:
