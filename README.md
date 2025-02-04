@@ -32,19 +32,28 @@ We designed this tool using open-source architecture requiring minimal computati
 
 ## Installation
 
-1. Clone the repository and navigate to the correct folder:
+1. To copy the files needed for this pipeline to your local machine, you will need Git. If needed, install Git as according to your operating system. Linux and MacOS may have Git pre-installed, while Windows does not.
+- [Git download] (https://git-scm.com/downloads)
+
+2. Use a command-line tool (e.g. Terminal in MacOS, PowerShell in Windows) to clone the repository to your computer:
     ```bash
     git clone https://github.com/ginnysun/LLM-for-irAEs
+    ```
+By default, Git will copy the folder to the working directory on your machine.
+
+3. Navigate to the newly created ```LLM-for-irAEs``` folder on your machine in command-line. 
+    ```bash
     cd LLM-for-irAEs
     ```
+Assuming you have not changed directories in command-line after step 2 and before this step, your working directory will now be 
+3. Install Anaconda Distribution as according to your operating system:
+- [Anaconda Distribution download](https://docs.anaconda.com/anaconda/install/)
+- Anaconda provides ```conda```, a package manager that can handle complex package dependencies to ensure reproducibility.
 
-2. Install Anaconda as according to your operating system:
-- [Anaconda](https://docs.anaconda.com/anaconda/install/)
-- Anaconda is a tool that provides ```conda```, a package manager that can handle complex package dependencies to ensure reproducibility.
-
-3. Install Ollama
-- [Ollama](https://github.com/ollama/ollama)
+4. Install Ollama as according to your operating system:
+- [Ollama download](https://ollama.com/download)
 - Ollama is an open-source tool for running large language models (LLMs) on a local machine.
+- For more detailed documentation, refer to the [Ollama Github](https://github.com/ollama/ollama).
 
 ## Usage
 
@@ -105,9 +114,18 @@ We designed this tool using open-source architecture requiring minimal computati
 
 ### Running the Code
 
-1. Follow the steps in ```./scripts/demo_LLM_walkthrough.pdf``` for a step-by-step guide, while ensuring everything runs smoothly. Note that you will have to create your own data to replace ```demo_reports.rdata``` (see [Data](#data) for how to format the file):
+1. First, you will need to create an Rdata file with input text named ```demo_reports.rdata``` in R (see [Data](#data) for how to format the file). For the sake of this tutorial, we recommend saving it to the main ```LLM-for-irAEs``` folder on your computer.
 
-2. Consider editing ```demo_LLM_loop_noGPU.py``` based on any troubleshooting needed while reproducing the steps outlined in ```demo_LLM_walkthrough.pdf```. If all goes well, run the Python script included in this repository to perform the full analysis:
+If you are unsure where the ```LLM-for-irAEs``` folder is located on your machine, you can use the following to obtain the full path:
+```bash
+pwd
+```
+
+2. We recommend copying moving the Python script ```demo_LLM_loop_noGPU.py``` from ```LLM-for-irAEs/scripts``` to the main ```LLM-for-irAEs``` folder on your machine so that the script can be run without navigating to a different directory.
+
+3. Follow the steps in ```./scripts/demo_LLM_walkthrough.pdf``` for a step-by-step guide, while ensuring everything runs smoothly. Note that you will have to create your own data to replace ```demo_reports.rdata``` (see [Data](#data) for how to format the file):
+
+4. Consider editing ```demo_LLM_loop_noGPU.py``` based on any troubleshooting needed while reproducing the steps outlined in ```demo_LLM_walkthrough.pdf```. If all goes well, run the Python script included in this repository to perform the full analysis:
     ```bash
     python ./scripts/demo_LLM_loop_noGPU.py
     ```
