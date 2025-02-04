@@ -4,7 +4,7 @@
 
 **Authors**: Virginia H. Sun, MD; Julius C. Heemelaar, MD; Ibrahim Hadzic, MSc; Vineet K. Raghu, PhD; Chia-Yun Wu, MD; Leyre Zubiri, MD, PhD; Azin Ghamari, MD; Nicole R. LeBoeuf, MD, MPH; Osama Abu-Shawer, MD, MS; Kenneth L. Kehl, MD, MPH; Shilpa Grover, MD, MPH; Prabhsimranjot Singh, MD; Giselle A. Suero-Abreu, MD, PhD, MSc; Jessica Wu, BA; Ayo S. Falade, MD, MBA, APGD; Kelley Grealish, MSN, NP; Molly F. Thomas, MD, PhD; Nora Hathaway, MSN, NP; Benjamin D. Medoff, MD; Hannah K. Gilman, BS; Alexandra-Chloe Villani, PhD; Jor Sam Ho, MPH; Meghan J. Mooradian, MD; Meghan E. Sise, MD; Daniel A. Zlotoff, MD, PhD; Steven M. Blum, MD; Michael Dougan, MD, PhD; Ryan J. Sullivan, MD; Tomas G. Neilan, MD, MPH; and Kerry L. Reynolds, MD
 
-**Code written by**: Virginia H. Sun, MD and Bryan L. Peaker
+**Code written by**: Virginia H. Sun, MD and Bryan L. Peacker
 
 **Published in**: [Journal of Clinical Oncology](https://ascopubs.org/journal/jco/)
 
@@ -32,7 +32,7 @@ We designed this tool using open-source architecture requiring minimal computati
 
 ## Installation
 
-1. Clone the repository:
+1. Clone the repository and navigate to the correct folder:
     ```bash
     git clone https://github.com/ginnysun/LLM-for-irAEs
     cd LLM-for-irAEs
@@ -40,15 +40,17 @@ We designed this tool using open-source architecture requiring minimal computati
 
 2. Install Anaconda as according to your operating system:
 - [Anaconda](https://docs.anaconda.com/anaconda/install/)
+- Anaconda is a tool that provides ```conda```, a package manager that can handle complex package dependencies to ensure reproducibility.
 
 3. Install Ollama
 - [Ollama](https://github.com/ollama/ollama)
+- Ollama is an open-source tool for running large language models (LLMs) on a local machine.
 
 ## Usage
 
 ### Set up your Ollama server
 
-1. Ensure Ollama was properly installed by running the following command. If not, follow the [installation instructions](https://github.com/ollama/ollama) as according to your operating system.
+1. Ensure Ollama was properly installed by running the following command using a command-line tool (e.g. Terminal in MacOS, PowerShell in Windows). If the Ollama version doe snot appear, follow the [installation instructions](https://github.com/ollama/ollama) as according to your operating system.
    ```bash
    ollama --version
    ```
@@ -56,7 +58,8 @@ We designed this tool using open-source architecture requiring minimal computati
     ```bash
     ollama pull mistral-openorca
     ```
-3. Start up your Ollama server. You may either run it directly using the Desktop application or run it in your shell. If using the latter, set up an Ollama server in a tmux session (on Linux/OSX) as demonstrated below. This allows you to make API requests to the Ollama server.
+    This will download Mistral OpenOrca, an open-source 7-billion parameter LLM. This step only needs to be performed once.
+3. Start up your Ollama server. You may either run it directly by opening the Desktop application or run it in your shell. If using the latter, consider using tmux to set up an Ollama server in a tmux session (on Linux/MacOS) as demonstrated below (optional). This allows you to make API requests to the Ollama server through a persistent shell that can continue running in the background while running other processes in command line.
     ```bash
     tmux new -s ollama-server
     ollama serve
@@ -72,13 +75,13 @@ We designed this tool using open-source architecture requiring minimal computati
     conda env create -f environment.yml
     conda activate demoenv
     ```
-    This will create the environment and install the required packages based on those listed in environment.yml. Anaconda will install operating system-specific dependencies as needed.
+    This will create the environment and install the required packages for this pipeline based on those listed in environment.yml. Anaconda will install operating system-specific dependencies as needed.
 2. Verify that the required packages were installed correctly:
     ```bash
     conda env export --from-history
     ```
 
-    This will pull up a list of the installed packages. Verify that these packages are the same versions as the ones listed in the manual installation below.
+    This will pull up a list of the installed packages. Verify that these packages are the same versions as the ones listed in the manual installation instructions below.
 
 **Option 2: Manually creating the environment and installing the required packages with Anaconda:**
 
@@ -104,7 +107,7 @@ We designed this tool using open-source architecture requiring minimal computati
 
 1. Follow the steps in ```./scripts/demo_LLM_walkthrough.pdf``` for a step-by-step guide, while ensuring everything runs smoothly. Note that you will have to create your own data to replace ```demo_reports.rdata``` (see [Data](#data) for how to format the file):
 
-2. Consider editing ```demo_LLM_loop_noGPU.py``` based on any troubleshooting you needed to do while replicating the steps outlined in ```demo_LLM_walkthrough.pdf```. If all goes well, run the full analysis:
+2. Consider editing ```demo_LLM_loop_noGPU.py``` based on any troubleshooting needed while reproducing the steps outlined in ```demo_LLM_walkthrough.pdf```. If all goes well, run the Python script included in this repository to perform the full analysis:
     ```bash
     python ./scripts/demo_LLM_loop_noGPU.py
     ```
@@ -126,7 +129,7 @@ We designed this tool using open-source architecture requiring minimal computati
 
 4. Ensure your Ollama server is using the GPU. This should be automatic, though if you come across any issues consider reading through the [troubleshooting guide](https://github.com/ollama/ollama/blob/main/docs/troubleshooting.md) for Ollama.
 
-5. Similar to above, consider editing ```demo_LLM_loop_GPU.py``` based on any troubleshooting you may need to do. If all goes well, run the full analysis:
+5. Similar to above, consider editing ```demo_LLM_loop_GPU.py``` based on any troubleshooting needed. If all goes well, run the Python script to perform the full analysis:
     ```bash
     python ./scripts/demo_LLM_loop_GPU.py
     ```
@@ -149,10 +152,10 @@ The dataset used in this code, ```demo_reports.rdata``` contains the following i
 | 2 | N/A   | progress note 1 text   |
 | ... | ...   | ...   |
 
-Data description: 
-- Patient_ID: Unique ID assigned to a patient's hospitalization
-- Adjudicated_Case: Reference case as determined by manual adjudication
-- Text: Raw text of progress notes and discharge summaries written during patient's hospitalization
+Variable description: 
+- Patient_ID: Unique ID assigned to a patient's hospitalization.
+- Adjudicated_Case: Reference case as determined by prior manual adjudication (for reference only, may leave blank or as "N/A" if manual adjudication has not been done prior to running the LLM).
+- Text: Raw text of progress notes and discharge summaries written during patient's hospitalization.
 
 ### Preprocessing
 
@@ -169,7 +172,7 @@ repo_name/
 ├── modelfiles/           # Example modelfiles that can be loaded onto the Ollama server
 ├── scripts/              # Scripts for running the LLM
 ├── README.md             # This README file
-├── requirements.txt      # Python dependencies
+├── environment.yml       # YAML file for loading the required environment and its associated packages.
 └── LICENSE               # License file
 ```
 
