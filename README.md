@@ -50,7 +50,7 @@ We designed this tool using open-source architecture requiring minimal computati
 
 ### Set up your Ollama server
 
-1. Ensure Ollama was properly installed by running the following command using a command-line tool (e.g. Terminal in MacOS, PowerShell in Windows). If the Ollama version doe snot appear, follow the [installation instructions](https://github.com/ollama/ollama) as according to your operating system.
+1. Ensure Ollama was properly installed by running the following command using a command-line tool (e.g. Terminal in MacOS, PowerShell in Windows). If the Ollama version does not appear, follow the [installation instructions](https://github.com/ollama/ollama) as according to your operating system.
    ```bash
    ollama --version
    ```
