@@ -129,6 +129,8 @@ We designed this tool using open-source architecture requiring minimal computati
    pwd
    ```
 
+   If you wish to simply test the LLM, you may skip this step. We have provided a sample ```demo_reports.rdata``` file with mock data for testing the LLM. Each cell contains "sample text" and should prompt the LLM to return "Answer: No." This is already in the main ```LLM-for-irAEs``` folder.
+
 2. We recommend copying moving the Python script ```demo_LLM_loop_noGPU.py``` from ```LLM-for-irAEs/scripts``` to the main ```LLM-for-irAEs``` folder on your machine so that the script can be run without navigating to a different directory.
 
 3. Follow the steps in ```./scripts/demo_LLM_walkthrough.pdf``` for a step-by-step guide, while ensuring everything runs smoothly. Note that you will have to create your own data to replace ```demo_reports.rdata``` (see [Data](#data) for how to format the file):
