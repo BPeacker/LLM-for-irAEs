@@ -199,6 +199,7 @@ repo_name/
 ├── modelfiles/           # Example modelfiles that can be loaded onto the Ollama server
 ├── scripts/              # Scripts for running the LLM
 ├── README.md             # This README file
+├── demo_reports.rdata    # File with mock data for testing the LLM
 ├── environment.yml       # YAML file for loading the required environment and its associated packages.
 └── LICENSE               # License file
 ```
