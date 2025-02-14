@@ -33,7 +33,7 @@ We designed this tool using open-source architecture requiring minimal computati
 ## Installation
 
 1. To copy the files needed for this pipeline to your local machine, you will need Git. If needed, install Git as according to your operating system. Linux and MacOS may have Git pre-installed, while Windows does not.
-- [Git download] (https://git-scm.com/downloads)
+- [Git download](https://git-scm.com/downloads)
 
 2. Use a command-line tool (e.g. Terminal in MacOS, PowerShell in Windows) to clone the repository to your computer:
     ```bash
@@ -46,11 +46,11 @@ By default, Git will copy the folder to the working directory on your machine.
     cd LLM-for-irAEs
     ```
 Assuming you have not changed directories in command-line after step 2 and before this step, your working directory will now be 
-3. Install Anaconda Distribution as according to your operating system:
+4. Install Anaconda Distribution as according to your operating system:
 - [Anaconda Distribution download](https://docs.anaconda.com/anaconda/install/)
 - Anaconda provides ```conda```, a package manager that can handle complex package dependencies to ensure reproducibility.
 
-4. Install Ollama as according to your operating system:
+5. Install Ollama as according to your operating system:
 - [Ollama download](https://ollama.com/download)
 - Ollama is an open-source tool for running large language models (LLMs) on a local machine.
 - For more detailed documentation, refer to the [Ollama Github](https://github.com/ollama/ollama).
@@ -115,11 +115,10 @@ Assuming you have not changed directories in command-line after step 2 and befor
 ### Running the Code
 
 1. First, you will need to create an Rdata file with input text named ```demo_reports.rdata``` in R (see [Data](#data) for how to format the file). For the sake of this tutorial, we recommend saving it to the main ```LLM-for-irAEs``` folder on your computer.
-
-If you are unsure where the ```LLM-for-irAEs``` folder is located on your machine, you can use the following to obtain the full path:
-```bash
-pwd
-```
+   If you are unsure where the ```LLM-for-irAEs``` folder is located on your machine, you can use the following to obtain the full path:
+   ```bash
+   pwd
+   ```
 
 2. We recommend copying moving the Python script ```demo_LLM_loop_noGPU.py``` from ```LLM-for-irAEs/scripts``` to the main ```LLM-for-irAEs``` folder on your machine so that the script can be run without navigating to a different directory.
 
@@ -131,9 +130,9 @@ pwd
     ```
    This code will output a csv file titled ```demo_LLM_loop_results.csv``` containing the LLM responses and corresponding source text retrieved via RAG. 
 
-### Speeding up the code with GPU
+### Speeding up the pipeline with GPU (optional, recommended only for experienced users)
 
-1. This may be tricky. Be sure to know what type of GPU is being used. Ensure that Ollama is compatable with your GPU [here](https://github.com/ollama/ollama/blob/main/docs/gpu.md).
+1. This may be tricky. Be sure to know what type of GPU is being used. Ensure that Ollama is compatible with your GPU [here](https://github.com/ollama/ollama/blob/main/docs/gpu.md).
 
 2. If using CUDA, install either NVCC Toolkit version [11.8](https://developer.nvidia.com/cuda-11-8-0-download-archive) or [12.1](https://developer.nvidia.com/cuda-12-1-0-download-archive).
 
