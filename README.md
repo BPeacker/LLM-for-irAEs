@@ -44,7 +44,7 @@ We designed this tool using open-source architecture requiring minimal computati
    If needed, install Git as according to your operating system.
    - [Git download](https://git-scm.com/downloads)
 
-3. Run the following code in a command-line tool (e.g. Terminal in MacOS, PowerShell in Windows) to clone the repository to your computer:
+3. Run the following code in a command-line tool (e.g. Terminal in MacOS, PowerShell in Windows) to use Git to clone the repository to your computer:
     ```bash
     git clone https://github.com/BPeacker/LLM-for-irAEs
     ```
