@@ -32,7 +32,7 @@ We designed this tool using open-source architecture requiring minimal computati
 
 ## Installation
 
-1. To copy the files needed for this pipeline to your local machine, you will need Git. Linux and MacOS may have Git pre-installed, while Windows does not.
+1. To copy the files needed for this pipeline to your local machine, you will need a tool called Git. Linux and MacOS may have Git pre-installed, while Windows does not.
 
    To check whether Git is installed, open a command-line tool (e.g. Terminal in MacOS PowerShell in Windows), and run the following code:
    ```
