@@ -148,7 +148,7 @@ We designed this tool using open-source architecture requiring minimal computati
    pwd
    ```
 
-4. Move the Python script ```demo_LLM_loop_noGPU.py``` from ```LLM-for-irAEs/scripts``` to the main ```LLM-for-irAEs``` folder on your machine so that the script can be run without navigating to a different directory. You may do this in command line or a file manager with a graphical user interface (e.g. Finder on MacOS, File Explorer on Windows).
+4. Move the Python script ```demo_LLM_loop_noGPU.py``` from ```LLM-for-irAEs/scripts``` to the main ```LLM-for-irAEs``` folder on your machine so that the script can be run without navigating to a different directory. You may do this in command line or a with file manager with a graphical user interface (e.g. Finder on MacOS, File Explorer on Windows).
 
 5. Follow the steps in ```./scripts/demo_LLM_walkthrough.pdf``` for a step-by-step guide, while ensuring everything runs smoothly. Note that you will have to create your own data to replace ```demo_reports.rdata``` (see [Data](#data) for how to format the file):
 
