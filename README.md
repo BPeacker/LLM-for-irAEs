@@ -35,7 +35,7 @@ We designed this tool using open-source architecture requiring minimal computati
 1. To copy the files needed for this pipeline to your local machine, you will need Git. If needed, install Git as according to your operating system. Linux and MacOS may have Git pre-installed, while Windows does not.
 - [Git download](https://git-scm.com/downloads)
 
-2. Use a command-line tool (e.g. Terminal in MacOS, PowerShell in Windows) to clone the repository to your computer:
+2. Run the following code in a command-line tool (e.g. Terminal in MacOS, PowerShell in Windows) to clone the repository to your computer:
     ```bash
     git clone https://github.com/BPeacker/LLM-for-irAEs
     ```
@@ -167,8 +167,6 @@ We designed this tool using open-source architecture requiring minimal computati
 
 ### Data Sources
 
-Due to protected health information (PHI) included in the data sources, we are unable to provide the dataset used in this code. We will attempt to create sample data using simulated patients and will include it in the repository when available. 
-
 The dataset used in this code, ```demo_reports.rdata``` contains the following information in this format:
 
 | Patient_ID | Adjudicated_Case    | Text    |
@@ -185,6 +183,8 @@ Variable description:
 - Patient_ID: Unique ID assigned to a patient's hospitalization.
 - Adjudicated_Case: Reference case as determined by prior manual adjudication (for reference only, may leave blank or as "N/A" if manual adjudication has not been done prior to running the LLM).
 - Text: Raw text of progress notes and discharge summaries written during patient's hospitalization.
+
+Due to protected health information (PHI) included in the data sources, we are unable to provide the dataset used in our study. We have created mock data with "sample text" under the "Text" variable for testing and it is included in this repository. 
 
 ### Preprocessing
 
