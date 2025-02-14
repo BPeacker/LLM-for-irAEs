@@ -37,23 +37,26 @@ We designed this tool using open-source architecture requiring minimal computati
 
 2. Use a command-line tool (e.g. Terminal in MacOS, PowerShell in Windows) to clone the repository to your computer:
     ```bash
-    git clone https://github.com/ginnysun/LLM-for-irAEs
+    git clone https://github.com/BPeacker/LLM-for-irAEs
     ```
-By default, Git will copy the folder to the working directory on your machine.
+    
+    By default, Git will copy the folder to the working directory on your machine.
 
 3. Navigate to the newly created ```LLM-for-irAEs``` folder on your machine in command-line. 
     ```bash
     cd LLM-for-irAEs
     ```
-Assuming you have not changed directories in command-line after step 2 and before this step, your working directory will now be 
-4. Install Anaconda Distribution as according to your operating system:
-- [Anaconda Distribution download](https://docs.anaconda.com/anaconda/install/)
-- Anaconda provides ```conda```, a package manager that can handle complex package dependencies to ensure reproducibility.
+    
+    Assuming you have not changed directories in command-line after step 2 and before this step, your working directory will now be in the ```LLM-for-irAEs``` folder.
+   
+5. Install Anaconda Distribution as according to your operating system:
+   - [Anaconda Distribution download](https://docs.anaconda.com/anaconda/install/)
+   - Anaconda provides ```conda```, a package manager that can handle complex package dependencies to ensure reproducibility.
 
-5. Install Ollama as according to your operating system:
-- [Ollama download](https://ollama.com/download)
-- Ollama is an open-source tool for running large language models (LLMs) on a local machine.
-- For more detailed documentation, refer to the [Ollama Github](https://github.com/ollama/ollama).
+6. Install Ollama as according to your operating system:
+   - [Ollama download](https://ollama.com/download)
+   - Ollama is an open-source tool for running large language models (LLMs) on a local machine.
+   - For more detailed documentation, refer to the [Ollama Github](https://github.com/ollama/ollama).
 
 ## Usage
 
@@ -63,16 +66,20 @@ Assuming you have not changed directories in command-line after step 2 and befor
    ```bash
    ollama --version
    ```
+   
 2. Pull the model you want to use.
     ```bash
     ollama pull mistral-openorca
     ```
+    
     This will download Mistral OpenOrca, an open-source 7-billion parameter LLM. This step only needs to be performed once.
+   
 3. Start up your Ollama server. You may either run it directly by opening the Desktop application or run it in your shell. If using the latter, consider using tmux to set up an Ollama server in a tmux session (on Linux/MacOS) as demonstrated below (optional). This allows you to make API requests to the Ollama server through a persistent shell that can continue running in the background while running other processes in command line.
     ```bash
     tmux new -s ollama-server
     ollama serve
     ```
+    
    Use ```Ctrl-B + d``` to detach from your session, and ```tmux attach-session -t ollama-server``` to return to your session as necessary.
 
 ### Set up your Anaconda environment
@@ -84,8 +91,10 @@ Assuming you have not changed directories in command-line after step 2 and befor
     conda env create -f environment.yml
     conda activate demoenv
     ```
+    
     This will create the environment and install the required packages for this pipeline based on those listed in environment.yml. Anaconda will install operating system-specific dependencies as needed.
-2. Verify that the required packages were installed correctly:
+   
+3. Verify that the required packages were installed correctly:
     ```bash
     conda env export --from-history
     ```
@@ -128,6 +137,7 @@ Assuming you have not changed directories in command-line after step 2 and befor
     ```bash
     python ./scripts/demo_LLM_loop_noGPU.py
     ```
+
    This code will output a csv file titled ```demo_LLM_loop_results.csv``` containing the LLM responses and corresponding source text retrieved via RAG. 
 
 ### Speeding up the pipeline with GPU (optional, recommended only for experienced users)
