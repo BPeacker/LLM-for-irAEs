@@ -56,7 +56,7 @@ We designed this tool using open-source architecture requiring minimal computati
     cd LLM-for-irAEs
     ```
     
-    Assuming you have not changed directories in command-line after step 2 and before this step, your working directory will now be in the ```LLM-for-irAEs``` folder.
+    Assuming you have not changed directories in command line after step 2 and before this step, your working directory will now be in the ```LLM-for-irAEs``` folder.
    
 5. Install Anaconda Distribution as according to your operating system:
    - [Anaconda Distribution download](https://docs.anaconda.com/anaconda/install/)
@@ -71,19 +71,25 @@ We designed this tool using open-source architecture requiring minimal computati
 
 ### Set up your Ollama server
 
-1. Ensure Ollama was properly installed by running the following command using a command-line tool (e.g. Terminal in MacOS, PowerShell in Windows). If the Ollama version does not appear, follow the [installation instructions](https://github.com/ollama/ollama) as according to your operating system.
+1. Ensure Ollama was properly installed by running the following command using a command-line tool (e.g. Terminal in MacOS, PowerShell in Windows). 
    ```bash
    ollama --version
    ```
    
-2. Pull the model you want to use.
+   If the output does not contain an Ollama version, follow the [installation instructions](https://github.com/ollama/ollama) as according to your operating system.
+   
+2. Pull the appropriate model for our pipeline:
     ```bash
     ollama pull mistral-openorca
     ```
     
     This will download Mistral OpenOrca, an open-source 7-billion parameter LLM. This step only needs to be performed once.
    
-3. Start up your Ollama server. You may either run it directly by opening the Desktop application or run it in your shell. If using the latter, consider using tmux to set up an Ollama server in a tmux session (on Linux/MacOS) as demonstrated below (optional). This allows you to make API requests to the Ollama server through a persistent shell that can continue running in the background while running other processes in command line.
+3. Start up your Ollama server. You may either run it directly by opening the Ollama application on your computer (recommended) or run it in your shell (optional for experienced users).
+
+   Once Ollama is running, you may proceed to setting up the Anaconda environment as detailed below.
+
+   If running Ollama in your shell, consider using tmux to set up an Ollama server in a tmux session (on Linux/MacOS) as demonstrated below (optional). This allows you to make API requests to the Ollama server through a persistent shell that can continue running in the background while running other processes in command line.
     ```bash
     tmux new -s ollama-server
     ollama serve
@@ -93,7 +99,7 @@ We designed this tool using open-source architecture requiring minimal computati
 
 ### Set up your Anaconda environment
 
-**Option 1: Creating the environment with required packages from the environment.yml file**
+**Option 1: Creating the environment with required packages from the environment.yml file (recommended)**
 
 1. Create a new Anaconda environment from the ```environment.yml``` file:
     ```bash
@@ -110,18 +116,20 @@ We designed this tool using open-source architecture requiring minimal computati
 
     This will pull up a list of the installed packages. Verify that these packages are the same versions as the ones listed in the manual installation instructions below.
 
-**Option 2: Manually creating the environment and installing the required packages with Anaconda:**
+**Option 2: Manually creating the environment and installing the required packages with Anaconda (only recommended if Option 1 fails)**
 
 1. Create a new Anaconda environment:
     ```bash
     conda create -n demoenv python=3.10
     conda activate demoenv
     ```
+    
 2. Install [Pytorch](https://pytorch.org/get-started/previous-versions/) (version 2.1.0) as according to your operating system.
 - E.g. for OSX:
     ```bash
     conda install pytorch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 -c pytorch
     ```
+    
 3. Install the necessary packages into your new environment:
     ```bash
     conda install langchain=0.1.2 -c conda-forge
@@ -132,19 +140,19 @@ We designed this tool using open-source architecture requiring minimal computati
 
 ### Running the Code
 
-1. First, you will need to create an Rdata file with input text named ```demo_reports.rdata``` in R (see [Data](#data) for how to format the file). For the sake of this tutorial, we recommend saving it to the main ```LLM-for-irAEs``` folder on your computer.
+1. To test the LLM prior to running it with real data, we have provided a sample ```demo_reports.rdata``` file with mock data for testing the LLM. Each cell contains "sample text" and should prompt the LLM to return "Answer: No." This is already in the main ```LLM-for-irAEs``` folder. If you wish to test the LLM with our mock data, proceed to step 2.
+
+   If you wish to run your own data through the LLM, you will need to create an Rdata file in R with input progress note or discharge summary text. To ensure it is compatible with the Python script for running the LLM, make sure to name this file ```demo_reports.rdata``` in R and delete or move the existing ```demo_reports.rdata``` file (see [Data](#data) for how to format this file).
    If you are unsure where the ```LLM-for-irAEs``` folder is located on your machine, you can use the following to obtain the full path:
    ```bash
    pwd
    ```
 
-   If you wish to test the LLM prior to running it with real data, we have provided a sample ```demo_reports.rdata``` file with mock data for testing the LLM. Each cell contains "sample text" and should prompt the LLM to return "Answer: No." This is already in the main ```LLM-for-irAEs``` folder.
+4. Move the Python script ```demo_LLM_loop_noGPU.py``` from ```LLM-for-irAEs/scripts``` to the main ```LLM-for-irAEs``` folder on your machine so that the script can be run without navigating to a different directory. You may do this in command line or a file manager with a graphical user interface (e.g. Finder on MacOS, File Explorer on Windows).
 
-2. We recommend copying moving the Python script ```demo_LLM_loop_noGPU.py``` from ```LLM-for-irAEs/scripts``` to the main ```LLM-for-irAEs``` folder on your machine so that the script can be run without navigating to a different directory.
+5. Follow the steps in ```./scripts/demo_LLM_walkthrough.pdf``` for a step-by-step guide, while ensuring everything runs smoothly. Note that you will have to create your own data to replace ```demo_reports.rdata``` (see [Data](#data) for how to format the file):
 
-3. Follow the steps in ```./scripts/demo_LLM_walkthrough.pdf``` for a step-by-step guide, while ensuring everything runs smoothly. Note that you will have to create your own data to replace ```demo_reports.rdata``` (see [Data](#data) for how to format the file):
-
-4. Consider editing ```demo_LLM_loop_noGPU.py``` based on any troubleshooting needed while reproducing the steps outlined in ```demo_LLM_walkthrough.pdf```. If all goes well, run the Python script included in this repository to perform the full analysis:
+6. Consider editing ```demo_LLM_loop_noGPU.py``` based on any troubleshooting needed while reproducing the steps outlined in ```demo_LLM_walkthrough.pdf```. If all goes well, run the Python script included in this repository to perform the full analysis:
     ```bash
     python ./scripts/demo_LLM_loop_noGPU.py
     ```
